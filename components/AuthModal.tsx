@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import useAuthModal from "@/hooks/useAuthModal";
+import { useEffect } from "react";
 
 const AuthModal = () => {
     const supabaseClient = useSupabaseClient();
@@ -13,9 +14,17 @@ const AuthModal = () => {
     const {session} = useSessionContext();
     const {onClose, isOpen} = useAuthModal();
 
-    // *aca seguir 
-    // !2:12:30
+    useEffect(() => {
+      if (session) {
+        router.refresh();
+        onClose();
+      }
+    },[session,router,onClose] );
 
+    // https://github.com/settings/applications/2327654
+    // https://supabase.com/dashboard/project/sxvrkggjcicvpdaiwmaj/editor/28576
+    // 2:15:00
+    
     const onChange =(open: boolean) => {
       if (!open) {
         onClose();
