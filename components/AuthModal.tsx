@@ -20,10 +20,6 @@ const AuthModal = () => {
         onClose();
       }
     },[session,router,onClose] );
-
-    // https://github.com/settings/applications/2327654
-    // https://supabase.com/dashboard/project/sxvrkggjcicvpdaiwmaj/editor/28576
-    // 2:15:00
     
     const onChange =(open: boolean) => {
       if (!open) {
