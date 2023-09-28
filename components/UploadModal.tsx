@@ -3,9 +3,11 @@
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import Modal from './Modal';
 import useUploadModal from '@/hooks/useUploadModal';
+import { useState } from 'react';
+import Input from './Input';
 
 const UploadModal = () => {
-
+    const [isLoading, setIsLoading] = useState();
     const uploadModal = useUploadModal();
 
     const {
@@ -43,7 +45,12 @@ const UploadModal = () => {
         <form 
         onSubmit={handleSubmit(onSubmit)}
         >
-            {/* aqui poner el input 2:32:25 */}
+           <Input
+            id="title"
+            disabled={isLoading}
+            {...register('title', {required: true})}
+            placeholder="Song title"
+           />
         </form>
     </Modal>
   );
